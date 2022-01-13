@@ -18,7 +18,7 @@ const Gallery = ({ isDesktop }: breakpointCheck) => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit
           amet mi sed massa tempus pellentesque. Integer sagittis, nunc porta
           blandit scelerisque, massa tortor pulvinar nisi, eget pulvinar magna
-          urna vel turpis.
+          urna vel turpiss.
         </p>
         <p>
           In malesuada eros et venenatis egestas. Maecenas tincidunt nibh in
