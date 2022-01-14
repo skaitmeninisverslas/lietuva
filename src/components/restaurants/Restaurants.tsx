@@ -7,13 +7,14 @@ import { pxToRem } from "../../styles/pxToRem";
 
 type restaurantData = {
   cityDetails: any;
+  marginSize: string;
 };
 
-const Restaurants = ({ cityDetails }: restaurantData) => {
+const Restaurants = ({ cityDetails, marginSize }: restaurantData) => {
   const { restaurants } = cityDetails;
 
   return (
-    <div style={{ marginLeft: pxToRem(208) }}>
+    <div style={{ margin: marginSize }}>
       <ul style={{ padding: 0 }}>
         {restaurants.map((rest: any, key: number) => (
           <StyledList key={key}>

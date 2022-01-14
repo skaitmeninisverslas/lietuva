@@ -2,15 +2,17 @@ import React from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
-import { images } from "./imageData";
 import { StyledGallery, StyledImg } from "./styles";
 import { Title } from "../cities/styles";
 
-type breakpointCheck = {
+type galleryTypes = {
   isDesktop: boolean;
+  cityDetails: any;
 };
 
-const Gallery = ({ isDesktop }: breakpointCheck) => {
+const Gallery = ({ isDesktop, cityDetails }: galleryTypes) => {
+  const { images } = cityDetails;
+
   return (
     <StyledGallery>
       <div>
@@ -46,7 +48,7 @@ const Gallery = ({ isDesktop }: breakpointCheck) => {
       {isDesktop ? (
         <ImageGallery items={images} />
       ) : (
-        images.map((item, key) => (
+        images.map((item: any, key: number) => (
           <StyledImg src={item.original} alt={item.name} key={key} />
         ))
       )}
