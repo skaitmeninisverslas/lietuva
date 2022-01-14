@@ -32,16 +32,23 @@ const CityContainer = ({ name, isDesktop }: cityTypes) => {
   const pages = () => {
     switch (page) {
       case "gallery":
-        return <Gallery isDesktop={isDesktop} />;
+        return <Gallery cityDetails={cityDetails} isDesktop={isDesktop} />;
       case "restaurants":
         return hasRestaurants ? (
-          <Restaurants cityDetails={cityDetails} />
+          <Restaurants
+            marginSize={
+              isDesktop
+                ? `${pxToRem(20)} 0 ${pxToRem(20)} ${pxToRem(208)}`
+                : `${pxToRem(20)} 0`
+            }
+            cityDetails={cityDetails}
+          />
         ) : (
-          <Gallery isDesktop={isDesktop} />
+          <Gallery cityDetails={cityDetails} isDesktop={isDesktop} />
         );
 
       default:
-        return <Gallery isDesktop={isDesktop} />;
+        return <Gallery cityDetails={cityDetails} isDesktop={isDesktop} />;
     }
   };
 
