@@ -10,11 +10,13 @@ type restaurantData = {
 };
 
 const Restaurants = ({ cityDetails }: restaurantData) => {
+  const { restaurants } = cityDetails;
+
   return (
     <div style={{ marginLeft: pxToRem(208) }}>
       <ul style={{ padding: 0 }}>
-        {cityDetails.restaurants.map(({ rest }: any) => (
-          <StyledList>
+        {restaurants.map((rest: any, key: number) => (
+          <StyledList key={key}>
             <div
               style={{
                 fontWeight: "bold",
@@ -52,7 +54,7 @@ const Restaurants = ({ cityDetails }: restaurantData) => {
 
 export default Restaurants;
 
-const StyledList = styled.div`
+const StyledList = styled.li`
   display: flex;
   flex-direction: column;
   border: 1px solid #f1f3f4;
