@@ -15,73 +15,51 @@ import Sidebar from "../sidebar/sidebar";
 import Restaurants from "../restaurants/Restaurants";
 import Gallery from "../gallery/gallery";
 
-interface cityTypes {
-  name: string;
-  isDesktop: boolean;
-}
-
-const CityContainer = ({ name, isDesktop }: cityTypes) => {
+const CityContainer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [page, setPage] = useState("gallery");
 
-  const cityDetails = cityData.find((i) => i.id === name);
+  const cityName = global.window && window.location.pathname.slice(1);
+  const cityDetails = cityData.find((i) => i.id === cityName);
   const hasRestaurants = cityData.find(
-    (item) => item.id === name && item.restaurants
+    (item) => item.id === cityName && item.restaurants
   );
 
   const pages = () => {
     switch (page) {
       case "gallery":
-        return <Gallery cityDetails={cityDetails} isDesktop={isDesktop} />;
+        return <Gallery cityDetails={cityDetails} />;
       case "restaurants":
         return hasRestaurants ? (
-          <Restaurants
-            marginSize={
-              isDesktop
-                ? `${pxToRem(20)} 0 ${pxToRem(20)} ${pxToRem(208)}`
-                : `${pxToRem(20)} 0`
-            }
-            cityDetails={cityDetails}
-          />
+          <Restaurants cityDetails={cityDetails} />
         ) : (
-          <Gallery cityDetails={cityDetails} isDesktop={isDesktop} />
+          <Gallery cityDetails={cityDetails} />
         );
 
       default:
-        return <Gallery cityDetails={cityDetails} isDesktop={isDesktop} />;
+        return <Gallery cityDetails={cityDetails} />;
     }
   };
 
   return (
     <StyledContent>
-      <NavMenu
-        isCityContainer
-        isDesktop={isDesktop}
-        marginSize={
-          isDesktop
-            ? `${pxToRem(20)} 0 ${pxToRem(20)} ${pxToRem(208)}`
-            : `${pxToRem(20)} 0`
-        }
-      />
+      <NavMenu isCityContainer />
 
-      {!isDesktop && (
-        <MobileMenu
-          style={{
-            boxShadow: isOpen
-              ? `0px 0px ${pxToRem(10)} 0px rgb(0 0 0 / 6%)`
-              : "none",
-          }}
-        >
-          {!isOpen ? (
-            <BiMenuAltLeft onClick={() => setIsOpen(true)} />
-          ) : (
-            <GrClose onClick={() => setIsOpen(false)} />
-          )}
-        </MobileMenu>
-      )}
+      <MobileMenu
+        style={{
+          boxShadow: isOpen
+            ? `0px 0px ${pxToRem(10)} 0px rgb(0 0 0 / 6%)`
+            : "none",
+        }}
+      >
+        {!isOpen ? (
+          <BiMenuAltLeft onClick={() => setIsOpen(true)} />
+        ) : (
+          <GrClose onClick={() => setIsOpen(false)} />
+        )}
+      </MobileMenu>
 
       <Sidebar
-        isDesktop={isDesktop}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         setPage={setPage}

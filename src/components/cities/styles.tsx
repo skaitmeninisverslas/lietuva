@@ -40,4 +40,8 @@ export const MobileMenu = styled.div`
   @media ${breakpoint.smMin} {
     width: ${pxToRem(70)};
   }
+
+  @media ${breakpoint.lgMin} {
+    display: none;
+  }
 `;

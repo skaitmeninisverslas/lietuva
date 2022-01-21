@@ -15,4 +15,15 @@ export const StyledImg = styled.img`
   width: 100%;
   margin-top: ${pxToRem(20)};
   border-radius: ${pxToRem(5)};
+
+  @media ${breakpoint.lgMin} {
+    display: none;
+  }
+`;
+
+export const StyledModule = styled.div`
+  display: none;
+  @media ${breakpoint.lgMin} {
+    display: block;
+  }
 `;

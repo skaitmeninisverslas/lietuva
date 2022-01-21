@@ -1,17 +1,17 @@
 import React from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+import { isMobile } from "react-device-detect";
 
-import { StyledGallery, StyledImg } from "./styles";
+import { StyledGallery, StyledImg, StyledModule } from "./styles";
 import { Title } from "../cities/styles";
 
 type galleryTypes = {
-  isDesktop: boolean;
   cityDetails: any;
 };
 
-const Gallery = ({ isDesktop, cityDetails }: galleryTypes) => {
-  const { images } = cityDetails;
+const Gallery = ({ cityDetails }: galleryTypes) => {
+  const { images } = cityDetails || {};
 
   return (
     <StyledGallery>
@@ -45,13 +45,20 @@ const Gallery = ({ isDesktop, cityDetails }: galleryTypes) => {
 
       <Title style={{ marginLeft: 0 }}>Galerija</Title>
 
-      {isDesktop ? (
-        <ImageGallery items={images} />
-      ) : (
+      {images && !isMobile ? (
+        <>
+          <StyledModule>
+            <ImageGallery items={images} />
+          </StyledModule>
+          {images.map((item: any, key: number) => (
+            <StyledImg src={item.original} alt={item.name} key={key} />
+          ))}
+        </>
+      ) : images && isMobile ? (
         images.map((item: any, key: number) => (
           <StyledImg src={item.original} alt={item.name} key={key} />
         ))
-      )}
+      ) : null}
     </StyledGallery>
   );
 };

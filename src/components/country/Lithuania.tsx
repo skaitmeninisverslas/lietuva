@@ -10,19 +10,10 @@ import {
 } from "./styles";
 import { pxToRem } from "../../styles/pxToRem";
 
-type desktopDetection = {
-  isDesktop: boolean;
-};
-
-const Lithuania = ({ isDesktop }: desktopDetection) => {
+const Lithuania = () => {
   return (
     <RestyledContent>
-      <NavMenu
-        isHomeContainer
-        marginSize={isDesktop ? `${pxToRem(20)} 0` : `${pxToRem(20)}`}
-        leftPosition={0}
-        isDesktop={isDesktop}
-      />
+      <NavMenu isHomeContainer />
       <StyledBanner>
         <StyledTitle>Pažink namus - virtuali kelionė po Lietuvą</StyledTitle>
         <StyledBackground src="assets/images/background.svg" alt="" />
