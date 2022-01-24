@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import { StyledContent } from "../../styles/shared";
-import { pxToRem } from "../../styles/pxToRem";
-import { breakpoint } from "../../styles/breakpoints";
+import { StyledContent } from "./shared";
+import { pxToRem } from "./pxToRem";
+import { breakpoint } from "./breakpoints";
 
 export const StyledBackground = styled.img`
   display: block;

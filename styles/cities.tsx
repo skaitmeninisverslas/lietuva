@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import { pxToRem } from "../../styles/pxToRem";
-import { breakpoint } from "../../styles/breakpoints";
-import { expand } from "../../styles/animations";
+import { pxToRem } from "./pxToRem";
+import { breakpoint } from "./breakpoints";
+import { expand } from "./animations";
 
 export const Title = styled.h2`
   position: relative;
@@ -39,5 +39,9 @@ export const MobileMenu = styled.div`
 
   @media ${breakpoint.smMin} {
     width: ${pxToRem(70)};
+  }
+
+  @media ${breakpoint.lgMin} {
+    display: none;
   }
 `;

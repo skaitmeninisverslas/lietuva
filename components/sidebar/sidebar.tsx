@@ -6,7 +6,6 @@ import { RiRouteLine } from "react-icons/ri";
 import { StyledSidebar, SidebarMenu, SidebarItem } from "./styles";
 
 type sidebarTypes = {
-  isDesktop: boolean;
   isOpen: boolean;
   setIsOpen: (setIsOpen: boolean) => void;
   setPage: (setPage: string) => void;
@@ -14,7 +13,6 @@ type sidebarTypes = {
 };
 
 const Sidebar = ({
-  isDesktop,
   isOpen,
   setIsOpen,
   setPage,
@@ -22,9 +20,7 @@ const Sidebar = ({
 }: sidebarTypes) => {
   return (
     <StyledSidebar
-      style={{
-        display: isDesktop ? "flex" : isOpen ? "flex" : "none",
-      }}
+      className={isOpen ? "open" : "closed"}
       onClick={() => setIsOpen(false)}
     >
       <SidebarMenu>

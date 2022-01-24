@@ -11,28 +11,55 @@ export const StyledMenu = styled.div`
   display: flex;
   align-items: center;
 
+  &.home-container {
+    margin: ${pxToRem(20)};
+    left: 0;
+
+    @media ${breakpoint.lgMin} {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  &.city-container {
+    margin: ${pxToRem(20)} 0;
+    @media ${breakpoint.lgMin} {
+      margin: ${pxToRem(20)} 0 ${pxToRem(20)} ${pxToRem(208)};
+    }
+  }
+
   &.active {
-    height: auto;
-    padding: ${pxToRem(40)};
-    position: fixed;
-    top: 0;
-    bottom: 100%;
-    right: 0;
-    left: ${pxToRem(60)};
-    flex-direction: column;
-    border-radius: 0;
-    animation: ${down} 0.7s forwards;
-    z-index: 6;
-    border-radius: ${pxToRem(20)};
+    @media ${breakpoint.mdMax} {
+      display: flex;
+      height: auto;
+      padding: ${pxToRem(40)};
+      position: fixed;
+      top: 0;
+      bottom: 100%;
+      right: 0;
+      left: ${pxToRem(60)};
+      flex-direction: column;
+      border-radius: 0;
+      animation: ${down} 0.7s forwards;
+      z-index: 6;
+      border-radius: ${pxToRem(20)};
+      &.city-container {
+        margin-right: ${pxToRem(20)};
+      }
+    }
 
     @media ${breakpoint.smMin} {
       left: ${pxToRem(90)};
     }
   }
 
-  svg {
+  .menu-icon {
+    display: block;
     color: #fff;
     font-size: ${pxToRem(29)};
+    @media ${breakpoint.lgMin} {
+      display: none;
+    }
     cursor: pointer;
     margin: 0 auto;
     path {
@@ -44,7 +71,7 @@ export const StyledMenu = styled.div`
     margin: 0 auto;
     list-style: none;
     padding: 0;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     height: 100%;
@@ -52,6 +79,11 @@ export const StyledMenu = styled.div`
     @media ${breakpoint.lgMin} {
       flex-direction: row;
       height: auto;
+      display: flex;
+    }
+
+    &.active {
+      display: flex;
     }
 
     li {

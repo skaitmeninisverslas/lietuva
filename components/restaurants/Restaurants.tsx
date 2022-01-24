@@ -3,18 +3,17 @@ import styled from "styled-components";
 
 import { GrLocation, GrLink } from "react-icons/gr";
 import { BiTime } from "react-icons/bi";
+
 import { pxToRem } from "../../styles/pxToRem";
+import { breakpoint } from "../../styles/breakpoints";
 
 type restaurantData = {
-  cityDetails: any;
-  marginSize: string;
+  restaurants: Array<object>;
 };
 
-const Restaurants = ({ cityDetails, marginSize }: restaurantData) => {
-  const { restaurants } = cityDetails;
-
+const Restaurants = ({ restaurants }: restaurantData) => {
   return (
-    <div style={{ margin: marginSize }}>
+    <StyledRestaurants>
       <ul style={{ padding: 0 }}>
         {restaurants.map((rest: any, key: number) => (
           <StyledList key={key}>
@@ -49,11 +48,18 @@ const Restaurants = ({ cityDetails, marginSize }: restaurantData) => {
           </StyledList>
         ))}
       </ul>
-    </div>
+    </StyledRestaurants>
   );
 };
 
 export default Restaurants;
+
+const StyledRestaurants = styled.div`
+  margin: ${pxToRem(20)} 0;
+  @media ${breakpoint.lgMin} {
+    margin: ${pxToRem(20)} 0 ${pxToRem(20)} ${pxToRem(208)};
+  }
+`;
 
 const StyledList = styled.li`
   display: flex;

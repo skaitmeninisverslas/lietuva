@@ -11,7 +11,7 @@ export const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: calc((100% - ${pxToRem(40)}));
-  margin: 0 auto;
+  margin: 0 auto ${pxToRem(60)} auto;
   text-align: center;
   @media ${breakpoint.xlMin} {
     width: 100%;

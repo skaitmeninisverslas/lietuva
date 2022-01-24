@@ -15,6 +15,18 @@ export const StyledSidebar = styled.div`
   padding-left: ${pxToRem(40)};
   animation: ${grow} 0.7s forwards;
 
+  &.open {
+    @media ${breakpoint.mdMax} {
+      display: flex;
+    }
+  }
+
+  &.closed {
+    @media ${breakpoint.mdMax} {
+      display: none;
+    }
+  }
+
   @media ${breakpoint.lgMin} {
     left: auto;
     animation: none;
