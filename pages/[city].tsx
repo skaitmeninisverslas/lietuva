@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import type { NextPage } from "next";
 import { ReactImageGalleryItem } from "react-image-gallery";
 
 import { BiMenuAltLeft } from "react-icons/bi";
 import { GrClose, GrLocation } from "react-icons/gr";
-import { RiSnowyLine } from "react-icons/ri";
+import { MdArrowBackIosNew } from "react-icons/md";
 
 import { StyledContent } from "../styles/shared";
 import { pxToRem } from "../styles/pxToRem";
@@ -17,12 +17,16 @@ import NavMenu from "../components/navigation/navigation";
 import Sidebar from "../components/sidebar/sidebar";
 import Restaurants from "../components/restaurants/Restaurants";
 import Gallery from "../components/gallery/gallery";
+import Image from "next/image";
+import { StyledNote } from "../styles/homepage";
+import Link from "next/link";
 
 type Props = {
   cityDetails: {
     name: string;
     images: ReactImageGalleryItem[];
     restaurants: Array<object>;
+    description: string;
   };
   hasRestaurants: Array<object>;
 };
@@ -30,32 +34,46 @@ type Props = {
 const CityContainer: NextPage<Props> = ({ cityDetails, hasRestaurants }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [page, setPage] = useState("gallery");
+  const [weather, setWeather] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const apiKey = "19261e3e58158a93ed75f2724f4ed5a0";
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${
+        cityDetails && cityDetails.name
+      }&appid=${apiKey}`;
+      const apiData = await fetch(url)
+        .then((res) => res.json())
+        .then((data) => data);
+      setWeather(apiData.weather[0]);
+    };
+    fetchData();
+  }, [cityDetails]);
 
   const router = useRouter();
   const { city } = router.query;
 
-  const { images, restaurants } = cityDetails;
+  const { images, restaurants, description } = cityDetails;
 
   const pages = () => {
     switch (page) {
       case "gallery":
-        return <Gallery images={images} />;
+        return <Gallery images={images} description={description} />;
       case "restaurants":
         return hasRestaurants ? (
           <Restaurants restaurants={restaurants} />
         ) : (
-          <Gallery images={images} />
+          <Gallery images={images} description={description} />
         );
 
       default:
-        return <Gallery images={images} />;
+        return <Gallery images={images} description={description} />;
     }
   };
 
   return (
     <StyledContent>
       <NavMenu isCityContainer />
-
       <MobileMenu
         style={{
           boxShadow: isOpen
@@ -69,7 +87,6 @@ const CityContainer: NextPage<Props> = ({ cityDetails, hasRestaurants }) => {
           <GrClose onClick={() => setIsOpen(false)} />
         )}
       </MobileMenu>
-
       <Sidebar
         isOpen={isOpen}
         setIsOpen={setIsOpen}
@@ -78,10 +95,43 @@ const CityContainer: NextPage<Props> = ({ cityDetails, hasRestaurants }) => {
       />
 
       <Title>
+        <Link href="/">
+          <a
+            style={{
+              fontSize: pxToRem(16),
+              fontWeight: "normal",
+              display: "flex",
+              alignItems: "center",
+              color: "#000",
+              textDecoration: "none",
+              marginBottom: pxToRem(20),
+              border: `${pxToRem(1)} solid #a6a7a4`,
+              width: pxToRem(127),
+              borderRadius: pxToRem(8),
+              padding: pxToRem(7),
+            }}
+          >
+            <MdArrowBackIosNew
+              style={{
+                marginRight: pxToRem(10),
+                paddingRight: pxToRem(10),
+                borderRight: `${pxToRem(1)} solid #a6a7a4`,
+              }}
+            />{" "}
+            Į pagrindinį
+          </a>
+        </Link>
         <GrLocation /> {cityDetails && cityDetails.name}
-        <RiSnowyLine style={{ position: "absolute", right: 0 }} />
+        <div className="icon">
+          <Image
+            src={`http://openweathermap.org/img/wn/${
+              weather && weather["icon"]
+            }.png`}
+            alt={weather && weather["description"]}
+            layout="fill"
+          />
+        </div>
       </Title>
-
       {pages()}
     </StyledContent>
   );

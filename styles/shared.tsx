@@ -25,4 +25,19 @@ export const StyledContent = styled.div`
   #map_inner circle[class^="sm_location_"] {
     position: relative;
   }
+
+  .image-gallery-thumbnail.active,
+  .image-gallery-thumbnail:focus,
+  .image-gallery-thumbnail:hover {
+    border: ${pxToRem(4)} solid #0000bb;
+  }
+
+  .icon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    width: ${pxToRem(40)};
+    height: ${pxToRem(40)};
+  }
 `;

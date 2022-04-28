@@ -55,3 +55,28 @@ export const RestyledContent = styled(StyledContent)`
     left: 0;
   }
 `;
+
+export const StyledNote = styled.div`
+  padding: ${pxToRem(15)};
+  border-radius: ${pxToRem(5)};
+  border: ${pxToRem(1)} solid #a6a7a4;
+  margin: 0 ${pxToRem(20)} ${pxToRem(20)} ${pxToRem(20)};
+  max-width: ${pxToRem(465)};
+  display: flex;
+  align-items: center;
+  font-size: ${pxToRem(16)};
+  font-weight: normal;
+
+  svg {
+    font-size: ${pxToRem(16)};
+    margin-right: ${pxToRem(15)};
+    padding-right: ${pxToRem(15)};
+    border-right: ${pxToRem(1)} solid #a6a7a4;
+    height: 100%;
+    color: #a6a7a4;
+  }
+
+  @media ${breakpoint.xlMin} {
+    margin: 0 0 ${pxToRem(20)} 0;
+  }
+`;

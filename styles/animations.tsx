@@ -32,13 +32,13 @@ export const expand = keyframes`
 
 export const Pulse = keyframes`
   0% {
-   outline: 5px solid rgba(255,255,255, 0.5);
+   outline: ${pxToRem(5)} solid rgba(255,255,255, 0.5);
   }
 
  
 
 100% {
     
-    outline: 5px solid rgba(255,255,255, 0);
+    outline: ${pxToRem(5)} solid rgba(255,255,255, 0);
   }
 `;

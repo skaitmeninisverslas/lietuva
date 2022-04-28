@@ -1,5 +1,6 @@
 import React from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { pxToRem } from "../../styles/pxToRem";
 import {
   StyledBlock,
   StyledBlockTitle,
@@ -42,8 +43,8 @@ const HomepageSelector = () => {
             <MdOutlineKeyboardArrowDown
               style={{
                 position: "absolute",
-                right: "10px",
-                fontSize: "24px",
+                right: pxToRem(10),
+                fontSize: pxToRem(24),
               }}
             />
           </StyledSelectorInput>

@@ -54,7 +54,7 @@ export const SidebarMenu = styled.ul`
       cursor: pointer;
       padding-top: ${pxToRem(16)};
       width: 70%;
-      border-bottom: 1px solid #000;
+      border-bottom: ${pxToRem(1)} solid #000;
       margin: 0 auto;
       &:last-child {
         border-bottom: none;

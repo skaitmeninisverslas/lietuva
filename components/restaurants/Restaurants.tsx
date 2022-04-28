@@ -64,7 +64,7 @@ const StyledRestaurants = styled.div`
 const StyledList = styled.li`
   display: flex;
   flex-direction: column;
-  border: 1px solid #f1f3f4;
+  border: ${pxToRem(1)} solid #f1f3f4;
   width: calc(((100% / 2) - ${pxToRem(40)}));
   padding: ${pxToRem(20)};
   border-radius: ${pxToRem(8)};

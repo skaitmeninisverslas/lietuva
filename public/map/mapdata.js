@@ -184,6 +184,16 @@ var simplemaps_countrymap_mapdata = {
       name: "Juodkrantė",
       display: "state",
     },
+    12: {
+      lat: "56.021",
+      lng: "23.517",
+      name: "Naisiai",
+      display: "state",
+      color: "#F8E833",
+      border_color: "#FFD400",
+      opacity: "1",
+      url: "/naisiai",
+    },
   },
   labels: {
     0: {
@@ -215,6 +225,16 @@ var simplemaps_countrymap_mapdata = {
       parent_id: "3",
       x: 585,
       y: 235,
+    },
+    12: {
+      name: "Naisiai",
+      parent_type: "location",
+      parent_id: "12",
+      color: "#FFD400",
+      hover_color: "#FFD400",
+      x: 450,
+      y: 135,
+      size: 8,
     },
   },
   // legend: {

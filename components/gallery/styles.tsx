@@ -8,6 +8,10 @@ export const StyledGallery = styled.div`
   @media ${breakpoint.lgMin} {
     margin-left: ${pxToRem(208)};
   }
+
+  .image-gallery-content .image-gallery-slide .image-gallery-image {
+    max-height: 100%;
+  }
 `;
 
 export const StyledImg = styled.img`

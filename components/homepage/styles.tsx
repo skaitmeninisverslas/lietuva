@@ -99,7 +99,7 @@ export const StyledSelector = styled.div`
 export const StyledSelectorInput = styled.span`
   display: block;
   padding: ${pxToRem(10)} 0;
-  border: 1px solid #e9ebef;
+  border: ${pxToRem(1)} solid #e9ebef;
   margin: 0;
   color: #fff;
   position: relative;

@@ -106,10 +106,10 @@ export const StyledMenu = styled.div`
         text-align: center;
         text-transform: uppercase;
         font-size: ${pxToRem(20)};
-        padding: 5px;
+        padding: ${pxToRem(5)};
         &.animated {
           animation: ${Pulse} 2s infinite;
-          border-radius: 8px;
+          border-radius: ${pxToRem(8)};
         }
         @media ${breakpoint.lgMin} {
           text-transform: none;
